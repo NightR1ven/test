@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище LogTestModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Logins">
+          <Key>
+            <PropertyRef Name="id_Log" />
+          </Key>
+          <Property Name="id_Log" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogT" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PasT" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_Profal" Type="int" />
+        </EntityType>
+        <EntityType Name="Profal">
+          <Key>
+            <PropertyRef Name="id_Profal" />
+          </Key>
+          <Property Name="id_Profal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_Profal" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Logins__id_Profa__398D8EEE">
+          <End Role="Profal" Type="Self.Profal" Multiplicity="0..1" />
+          <End Role="Logins" Type="Self.Logins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profal">
+              <PropertyRef Name="id_Profal" />
+            </Principal>
+            <Dependent Role="Logins">
+              <PropertyRef Name="id_Profal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище LogTestModelContainer">
+          <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profal" EntityType="Self.Profal" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Logins__id_Profa__398D8EEE" Association="Self.FK__Logins__id_Profa__398D8EEE">
+            <End Role="Profal" EntitySet="Profal" />
+            <End Role="Logins" EntitySet="Logins" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LogTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id_Log" />
+          </Key>
+          <Property Name="id_Log" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_Profal" Type="Int32" />
+          <NavigationProperty Name="Profal" Relationship="Self.FK__Logins__id_Profa__398D8EEE" FromRole="Logins" ToRole="Profal" />
+        </EntityType>
+        <EntityType Name="Profal">
+          <Key>
+            <PropertyRef Name="id_Profal" />
+          </Key>
+          <Property Name="id_Profal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_Profal" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Logins" Relationship="Self.FK__Logins__id_Profa__398D8EEE" FromRole="Profal" ToRole="Logins" />
+        </EntityType>
+        <Association Name="FK__Logins__id_Profa__398D8EEE">
+          <End Role="Profal" Type="Self.Profal" Multiplicity="0..1" />
+          <End Role="Logins" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profal">
+              <PropertyRef Name="id_Profal" />
+            </Principal>
+            <Dependent Role="Logins">
+              <PropertyRef Name="id_Profal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LogTestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Profals" EntityType="Self.Profal" />
+          <AssociationSet Name="FK__Logins__id_Profa__398D8EEE" Association="Self.FK__Logins__id_Profa__398D8EEE">
+            <End Role="Profal" EntitySet="Profals" />
+            <End Role="Logins" EntitySet="Logins" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище LogTestModelContainer" CdmEntityContainer="LogTestEntities">
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="LogTestModel.Login">
+              <MappingFragment StoreEntitySet="Logins">
+                <ScalarProperty Name="id_Log" ColumnName="id_Log" />
+                <ScalarProperty Name="LogT" ColumnName="LogT" />
+                <ScalarProperty Name="PasT" ColumnName="PasT" />
+                <ScalarProperty Name="id_Profal" ColumnName="id_Profal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profals">
+            <EntityTypeMapping TypeName="LogTestModel.Profal">
+              <MappingFragment StoreEntitySet="Profal">
+                <ScalarProperty Name="id_Profal" ColumnName="id_Profal" />
+                <ScalarProperty Name="name_Profal" ColumnName="name_Profal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

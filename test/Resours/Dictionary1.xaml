@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:test.Resours">
+
+    <SolidColorBrush x:Key="Ping" Color="LightPink"/>
+
+
+    <Style x:Key="defButton" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource Ping}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="120"/>
+    </Style>
+
+    <Style x:Key="defLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{DynamicResource Ping}"/>
+        <Setter Property="FontSize" Value="24"/>
+    </Style>
+    <Style x:Key="defTextBox" TargetType="TextBox">
+        <Setter  Property="Background" Value="{DynamicResource Ping}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="40"/>
+
+    </Style>
+    <Style x:Key="defPasBox" TargetType="PasswordBox">
+        <Setter  Property="Background" Value="{DynamicResource Ping}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Height" Value="40"/>
+    </Style>
+</ResourceDictionary>

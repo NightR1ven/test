@@ -1,0 +1,34 @@
+﻿<Window x:Class="test.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:test"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="250" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="1" Grid.Column="0" Content="Login" Style="{DynamicResource defLabel}" VerticalAlignment="Bottom" Margin="5,0,0,5"/>
+        <TextBox x:Name="textLog" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Style="{DynamicResource defTextBox}" Width="auto" Margin="0,0,5,5"/>
+        <PasswordBox x:Name="pasBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Style="{DynamicResource defPasBox}" Width="auto" Margin="0,5,5,0"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Password" Style="{DynamicResource defLabel}" VerticalAlignment="Top" Margin="5,5,0,0"/>
+    </Grid>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="Enter" Style="{DynamicResource defButton}" Content="Enter" Margin="0,0,5,0" Click="BtnEnter"/>
+            <Button x:Name="Exit" Style="{DynamicResource defButton}" Content="Exit" Margin="5,0,0,0" Click="BtnExit"/>
+        </StackPanel>
+    </Grid>
+</Window>
